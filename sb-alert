@@ -1,0 +1,16 @@
+#!/bin/sh
+
+mapa="${XDG_CACHE_HOME:-$HOME/.cache}/alertmap.png"
+info="${XDG_CACHE_HOME:-$HOME/.cache}/info.txt"
+
+curl -sL https://telegram.me/s/air_alert_ua | html2text | grep 'Львівська область' | tail -1 > $info
+grep "Відбій" "$info" >> /dev/null && echo "🔱"
+grep "тривога" "$info" >> /dev/null && echo "📢"
+
+case $BLOCK_BUTTON in
+	1) notify-send "Тривожний модуль" "Завантаження мапи..." && curl -sL "https://alerts.com.ua/map.png" > $mapa && setsid sxiv "$mapa" ;;
+#	2) notify-send ;;
+#	3) notify-send "" ;;
+#	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac;
+echo  "🔱"

@@ -1,6 +1,6 @@
 #!/bin/sh
 #Скрипт, що інформує про наліт ракет із москви
-#Я використовую його з DWM
+#Я використовую його з DWMBlocks
 
 mapa="${XDG_CACHE_HOME:-$HOME/.cache}/alertmap.png"
 info="${XDG_CACHE_HOME:-$HOME/.cache}/info.txt"

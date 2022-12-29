@@ -1,9 +1,11 @@
 #!/bin/sh
+#Скрипт, що інформує про наліт ракет із москви
+#Я використовую його з DWM
 
 mapa="${XDG_CACHE_HOME:-$HOME/.cache}/alertmap.png"
 info="${XDG_CACHE_HOME:-$HOME/.cache}/info.txt"
 
-curl -sL https://telegram.me/s/air_alert_ua | html2text | grep 'Львівська область' | tail -1 > $info
+curl -sL https://telegram.me/s/air_alert_ua | html2text | grep '*ПОТРІБНА* область' | tail -1 > $info
 grep "Відбій" "$info" >> /dev/null && echo "🔱"
 grep "тривога" "$info" >> /dev/null && echo "📢"
 
